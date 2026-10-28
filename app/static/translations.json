@@ -1,0 +1,1395 @@
+{
+  "messages": {
+    "Act as bot": {
+      "en": "Act as bot",
+      "uk": "Діяти від імені бота"
+    },
+    "Add bot": {
+      "en": "Add bot",
+      "uk": "Додати бота"
+    },
+    "Settings": {
+      "en": "Settings",
+      "uk": "Налаштування"
+    },
+    "Reconnect": {
+      "en": "Reconnect",
+      "uk": "Перепідключити"
+    },
+    "Internal ID": {
+      "en": "Internal ID",
+      "uk": "Внутрішній ID"
+    },
+    "Name": {
+      "en": "Name",
+      "uk": "Назва"
+    },
+    "Discord Application ID (optional)": {
+      "en": "Discord Application ID (optional)",
+      "uk": "Discord Application ID (необов’язково)"
+    },
+    "Token environment variable": {
+      "en": "Token environment variable",
+      "uk": "Змінна середовища з токеном"
+    },
+    "Save the token in your local .env. Restart the panel after changing .env.": {
+      "en": "Save the token in your local .env. Restart the panel after changing .env.",
+      "uk": "Запишіть токен у локальний .env. Після зміни .env перезапустіть панель."
+    },
+    "Enabled": {
+      "en": "Enabled",
+      "uk": "Увімкнено"
+    },
+    "Allow granting administrative roles": {
+      "en": "Allow granting administrative roles",
+      "uk": "Дозволити призначення адміністративних ролей"
+    },
+    "Save profile": {
+      "en": "Save profile",
+      "uk": "Зберегти профіль"
+    },
+    "Close": {
+      "en": "Close",
+      "uk": "Закрити"
+    },
+    "Sections": {
+      "en": "Sections",
+      "uk": "Розділи"
+    },
+    "New message": {
+      "en": "New message",
+      "uk": "Нове повідомлення"
+    },
+    "Sent messages": {
+      "en": "Sent messages",
+      "uk": "Надіслані повідомлення"
+    },
+    "Sent": {
+      "en": "Sent",
+      "uk": "Надіслані"
+    },
+    "Reaction roles": {
+      "en": "Reaction roles",
+      "uk": "Ролі за реакції"
+    },
+    "Audit log": {
+      "en": "Audit log",
+      "uk": "Журнал дій"
+    },
+    "Create post": {
+      "en": "Create post",
+      "uk": "Створити публікацію"
+    },
+    "Cancel editing": {
+      "en": "Cancel editing",
+      "uk": "Скасувати редагування"
+    },
+    "Server": {
+      "en": "Server",
+      "uk": "Сервер"
+    },
+    "Channel": {
+      "en": "Channel",
+      "uk": "Канал"
+    },
+    "Select a server": {
+      "en": "Select a server",
+      "uk": "Виберіть сервер"
+    },
+    "Select a server first": {
+      "en": "Select a server first",
+      "uk": "Спочатку виберіть сервер"
+    },
+    "Message text": {
+      "en": "Message text",
+      "uk": "Текст повідомлення"
+    },
+    "Text formatting": {
+      "en": "Text formatting",
+      "uk": "Форматування тексту"
+    },
+    "Bold": {
+      "en": "Bold",
+      "uk": "Жирний"
+    },
+    "Italic": {
+      "en": "Italic",
+      "uk": "Курсив"
+    },
+    "Underline": {
+      "en": "Underline",
+      "uk": "Підкреслення"
+    },
+    "Strikethrough": {
+      "en": "Strikethrough",
+      "uk": "Закреслення"
+    },
+    "Spoiler": {
+      "en": "Spoiler",
+      "uk": "Спойлер"
+    },
+    "Code": {
+      "en": "Code",
+      "uk": "Код"
+    },
+    "Quote": {
+      "en": "Quote",
+      "uk": "Цитата"
+    },
+    "List": {
+      "en": "List",
+      "uk": "Список"
+    },
+    "Plain URL with automatic Discord preview": {
+      "en": "Plain URL with automatic Discord preview",
+      "uk": "Звичайний URL з автоматичним прев’ю Discord"
+    },
+    "🔗 URL + preview": {
+      "en": "🔗 URL + preview",
+      "uk": "🔗 URL + прев’ю"
+    },
+    "Link with custom text": {
+      "en": "Link with custom text",
+      "uk": "Посилання з власним текстом"
+    },
+    "↗ Text link": {
+      "en": "↗ Text link",
+      "uk": "↗ Текстове посилання"
+    },
+    "Text above the embed, mentions, links…": {
+      "en": "Text above the embed, mentions, links…",
+      "uk": "Текст над embed, згадки, посилання…"
+    },
+    "Insert role mention": {
+      "en": "Insert role mention",
+      "uk": "Вставити згадку ролі"
+    },
+    "Insert channel link": {
+      "en": "Insert channel link",
+      "uk": "Вставити посилання на канал"
+    },
+    "@ Insert role": {
+      "en": "@ Insert role",
+      "uk": "@ Вставити роль"
+    },
+    "# Insert channel": {
+      "en": "# Insert channel",
+      "uk": "# Вставити канал"
+    },
+    "Roles and everyone enable actual mentions": {
+      "en": "Roles and everyone enable actual mentions",
+      "uk": "Роль і everyone увімкнуть справжні згадки"
+    },
+    "Add embed": {
+      "en": "Add embed",
+      "uk": "Додати embed"
+    },
+    "Title": {
+      "en": "Title",
+      "uk": "Заголовок"
+    },
+    "Post title": {
+      "en": "Post title",
+      "uk": "Заголовок публікації"
+    },
+    "Color": {
+      "en": "Color",
+      "uk": "Колір"
+    },
+    "Title URL": {
+      "en": "Title URL",
+      "uk": "Посилання заголовка"
+    },
+    "Description": {
+      "en": "Description",
+      "uk": "Опис"
+    },
+    "Embed description formatting": {
+      "en": "Embed description formatting",
+      "uk": "Форматування опису embed"
+    },
+    "Plain clickable URL": {
+      "en": "Plain clickable URL",
+      "uk": "Звичайне клікабельне посилання"
+    },
+    "Discord Markdown is supported": {
+      "en": "Discord Markdown is supported",
+      "uk": "Підтримується Discord Markdown"
+    },
+    "Author, images and footer": {
+      "en": "Author, images and footer",
+      "uk": "Автор, зображення та нижній підпис"
+    },
+    "Author name": {
+      "en": "Author name",
+      "uk": "Ім’я автора"
+    },
+    "Author URL": {
+      "en": "Author URL",
+      "uk": "Посилання автора"
+    },
+    "Author icon": {
+      "en": "Author icon",
+      "uk": "Іконка автора"
+    },
+    "Large image URL": {
+      "en": "Large image URL",
+      "uk": "Посилання на велике зображення"
+    },
+    "Thumbnail URL": {
+      "en": "Thumbnail URL",
+      "uk": "Посилання на мініатюру"
+    },
+    "Footer": {
+      "en": "Footer",
+      "uk": "Нижній підпис"
+    },
+    "Footer icon": {
+      "en": "Footer icon",
+      "uk": "Іконка нижнього підпису"
+    },
+    "Add current time": {
+      "en": "Add current time",
+      "uk": "Додати поточний час"
+    },
+    "Embed fields": {
+      "en": "Embed fields",
+      "uk": "Поля embed"
+    },
+    "+ Field": {
+      "en": "+ Field",
+      "uk": "+ Поле"
+    },
+    "Choose images or files": {
+      "en": "Choose images or files",
+      "uk": "Вибрати зображення або файли"
+    },
+    "Up to 10 files. Select “Main” to use an image inside the embed.": {
+      "en": "Up to 10 files. Select “Main” to use an image inside the embed.",
+      "uk": "До 10 файлів. Щоб додати зображення в embed, позначте «Головне»."
+    },
+    "Allow actual @mentions": {
+      "en": "Allow actual @mentions",
+      "uk": "Дозволити справжні @згадки"
+    },
+    "Send message": {
+      "en": "Send message",
+      "uk": "Надіслати повідомлення"
+    },
+    "BOT": {
+      "en": "BOT",
+      "uk": "БОТ"
+    },
+    "Today, 12:00": {
+      "en": "Today, 12:00",
+      "uk": "Сьогодні, 12:00"
+    },
+    "Your post description will appear here.": {
+      "en": "Your post description will appear here.",
+      "uk": "Тут з’явиться опис публікації."
+    },
+    "Uploaded image preview": {
+      "en": "Uploaded image preview",
+      "uk": "Попередній перегляд завантаженого зображення"
+    },
+    "Refresh": {
+      "en": "Refresh",
+      "uk": "Оновити"
+    },
+    "Import messages from Discord": {
+      "en": "Import messages from Discord",
+      "uk": "Імпорт повідомлень із Discord"
+    },
+    "Imports only messages sent by this bot.": {
+      "en": "Imports only messages sent by this bot.",
+      "uk": "Імпортує лише повідомлення, надіслані цим ботом."
+    },
+    "All available channels": {
+      "en": "All available channels",
+      "uk": "Усі доступні канали"
+    },
+    "Recent messages per channel": {
+      "en": "Recent messages per channel",
+      "uk": "Останніх повідомлень на канал"
+    },
+    "Scan entire history": {
+      "en": "Scan entire history",
+      "uk": "Сканувати всю історію"
+    },
+    "Import": {
+      "en": "Import",
+      "uk": "Імпортувати"
+    },
+    "No messages yet.": {
+      "en": "No messages yet.",
+      "uk": "Повідомлень ще немає."
+    },
+    "New rule": {
+      "en": "New rule",
+      "uk": "Нове правило"
+    },
+    "Message ID": {
+      "en": "Message ID",
+      "uk": "ID повідомлення"
+    },
+    "Emoji": {
+      "en": "Emoji",
+      "uk": "Емодзі"
+    },
+    "✅ or custom emoji": {
+      "en": "✅ or custom emoji",
+      "uk": "✅ або власний емодзі"
+    },
+    "Choose emoji": {
+      "en": "Choose emoji",
+      "uk": "Вибрати емодзі"
+    },
+    "Search: heart, fire, smile…": {
+      "en": "Search: heart, fire, smile…",
+      "uk": "Пошук: heart, fire, smile…"
+    },
+    "Loading catalog…": {
+      "en": "Loading catalog…",
+      "uk": "Завантаження каталогу…"
+    },
+    "You can also paste a custom server emoji from Discord.": {
+      "en": "You can also paste a custom server emoji from Discord.",
+      "uk": "Власний емодзі сервера також можна вставити з Discord вручну."
+    },
+    "Role": {
+      "en": "Role",
+      "uk": "Роль"
+    },
+    "Remove role when reaction is removed": {
+      "en": "Remove role when reaction is removed",
+      "uk": "Знімати роль після видалення реакції"
+    },
+    "Create rule": {
+      "en": "Create rule",
+      "uk": "Створити правило"
+    },
+    "Rules": {
+      "en": "Rules",
+      "uk": "Правила"
+    },
+    "No rules yet.": {
+      "en": "No rules yet.",
+      "uk": "Правил ще немає."
+    },
+    "Recent actions": {
+      "en": "Recent actions",
+      "uk": "Останні дії"
+    },
+    "The audit log is empty.": {
+      "en": "The audit log is empty.",
+      "uk": "Журнал порожній."
+    },
+    "Discord mentions": {
+      "en": "Discord mentions",
+      "uk": "Згадки Discord"
+    },
+    "Connecting…": {
+      "en": "Connecting…",
+      "uk": "Підключення…"
+    },
+    "Select a bot profile": {
+      "en": "Select a bot profile",
+      "uk": "Виберіть профіль бота"
+    },
+    "Bot disabled": {
+      "en": "Bot disabled",
+      "uk": "Бота вимкнено"
+    },
+    "Set the token in .env and restart the panel": {
+      "en": "Set the token in .env and restart the panel",
+      "uk": "Укажіть токен у .env та перезапустіть панель"
+    },
+    "Not connected": {
+      "en": "Not connected",
+      "uk": "Немає з’єднання"
+    },
+    "Loading…": {
+      "en": "Loading…",
+      "uk": "Завантаження…"
+    },
+    "Select a channel": {
+      "en": "Select a channel",
+      "uk": "Виберіть канал"
+    },
+    "Select a role": {
+      "en": "Select a role",
+      "uk": "Виберіть роль"
+    },
+    "{count} standard Unicode emoji": {
+      "en": "{count} standard Unicode emoji",
+      "uk": "Стандартні Unicode-емодзі: {count}"
+    },
+    "Nothing found": {
+      "en": "Nothing found",
+      "uk": "Нічого не знайдено"
+    },
+    "Loading the full Unicode catalog…": {
+      "en": "Loading the full Unicode catalog…",
+      "uk": "Завантаження повного каталогу Unicode…"
+    },
+    "The bot lacks Send Messages in this channel.": {
+      "en": "The bot lacks Send Messages in this channel.",
+      "uk": "У бота немає дозволу Send Messages у цьому каналі."
+    },
+    "The bot lacks Embed Links; link previews and embeds will not appear.": {
+      "en": "The bot lacks Embed Links; link previews and embeds will not appear.",
+      "uk": "У бота немає дозволу Embed Links — прев’ю посилань та embed не з’являться."
+    },
+    "bold text": {
+      "en": "bold text",
+      "uk": "жирний текст"
+    },
+    "italic text": {
+      "en": "italic text",
+      "uk": "курсив"
+    },
+    "underlined text": {
+      "en": "underlined text",
+      "uk": "підкреслений текст"
+    },
+    "strikethrough text": {
+      "en": "strikethrough text",
+      "uk": "закреслений текст"
+    },
+    "hidden text": {
+      "en": "hidden text",
+      "uk": "прихований текст"
+    },
+    "code": {
+      "en": "code",
+      "uk": "код"
+    },
+    "quote text": {
+      "en": "quote text",
+      "uk": "текст цитати"
+    },
+    "list item": {
+      "en": "list item",
+      "uk": "елемент списку"
+    },
+    "URL for automatic Discord preview": {
+      "en": "URL for automatic Discord preview",
+      "uk": "URL для автоматичного прев’ю Discord"
+    },
+    "Link display text": {
+      "en": "Link display text",
+      "uk": "Текст посилання"
+    },
+    "Open link": {
+      "en": "Open link",
+      "uk": "Відкрити посилання"
+    },
+    "Link URL": {
+      "en": "Link URL",
+      "uk": "Адреса посилання"
+    },
+    "link text": {
+      "en": "link text",
+      "uk": "текст посилання"
+    },
+    "All members": {
+      "en": "All members",
+      "uk": "Усі учасники"
+    },
+    "Online members": {
+      "en": "Online members",
+      "uk": "Учасники онлайн"
+    },
+    "Value": {
+      "en": "Value",
+      "uk": "Значення"
+    },
+    "Inline": {
+      "en": "Inline",
+      "uk": "В одному рядку"
+    },
+    "Delete": {
+      "en": "Delete",
+      "uk": "Видалити"
+    },
+    "now": {
+      "en": "now",
+      "uk": "зараз"
+    },
+    "A message can have at most 10 files": {
+      "en": "A message can have at most 10 files",
+      "uk": "Повідомлення може містити щонайбільше 10 файлів"
+    },
+    "Uploading {name}…": {
+      "en": "Uploading {name}…",
+      "uk": "Завантаження {name}…"
+    },
+    "Main": {
+      "en": "Main",
+      "uk": "Головне"
+    },
+    "Discord attachment": {
+      "en": "Discord attachment",
+      "uk": "Вкладення Discord"
+    },
+    "Saving…": {
+      "en": "Saving…",
+      "uk": "Збереження…"
+    },
+    "Sending…": {
+      "en": "Sending…",
+      "uk": "Надсилання…"
+    },
+    "Message updated": {
+      "en": "Message updated",
+      "uk": "Повідомлення оновлено"
+    },
+    "Message sent": {
+      "en": "Message sent",
+      "uk": "Повідомлення надіслано"
+    },
+    "Scan the entire history of all available channels? This may take a long time.": {
+      "en": "Scan the entire history of all available channels? This may take a long time.",
+      "uk": "Сканувати всю історію всіх доступних каналів? Це може тривати довго."
+    },
+    "Scanning Discord history… Keep this page open.": {
+      "en": "Scanning Discord history… Keep this page open.",
+      "uk": "Сканування історії Discord… Не закривайте сторінку."
+    },
+    " Skipped channels without access: {channels}.": {
+      "en": " Skipped channels without access: {channels}.",
+      "uk": " Пропущені канали без доступу: {channels}."
+    },
+    "Found {imported}: {created} new, {updated} updated. Messages scanned: {scanned}.{skipped}": {
+      "en": "Found {imported}: {created} new, {updated} updated. Messages scanned: {scanned}.{skipped}",
+      "uk": "Знайдено {imported}: нових — {created}, оновлено — {updated}. Перевірено повідомлень: {scanned}.{skipped}"
+    },
+    "Messages imported: {count}": {
+      "en": "Messages imported: {count}",
+      "uk": "Імпортовано повідомлень: {count}"
+    },
+    "Message with attachment": {
+      "en": "Message with attachment",
+      "uk": "Повідомлення з вкладенням"
+    },
+    "Edit": {
+      "en": "Edit",
+      "uk": "Редагувати"
+    },
+    "Open": {
+      "en": "Open",
+      "uk": "Відкрити"
+    },
+    "Saved file · {id}": {
+      "en": "Saved file · {id}",
+      "uk": "Збережений файл · {id}"
+    },
+    "Edit post": {
+      "en": "Edit post",
+      "uk": "Редагувати публікацію"
+    },
+    "Save changes": {
+      "en": "Save changes",
+      "uk": "Зберегти зміни"
+    },
+    "Delete message {id} from Discord?": {
+      "en": "Delete message {id} from Discord?",
+      "uk": "Видалити повідомлення {id} із Discord?"
+    },
+    "Message deleted": {
+      "en": "Message deleted",
+      "uk": "Повідомлення видалено"
+    },
+    "Creating…": {
+      "en": "Creating…",
+      "uk": "Створення…"
+    },
+    "Done": {
+      "en": "Done",
+      "uk": "Готово"
+    },
+    "Reaction rule created": {
+      "en": "Reaction rule created",
+      "uk": "Правило реакції створено"
+    },
+    "Grant and remove": {
+      "en": "Grant and remove",
+      "uk": "Призначення та зняття"
+    },
+    "Grant only": {
+      "en": "Grant only",
+      "uk": "Лише призначення"
+    },
+    "Message {message} · Channel {channel} · {date}": {
+      "en": "Message {message} · Channel {channel} · {date}",
+      "uk": "Повідомлення {message} · Канал {channel} · {date}"
+    },
+    "Message {message} · {mode}": {
+      "en": "Message {message} · {mode}",
+      "uk": "Повідомлення {message} · {mode}"
+    },
+    "{emoji} → Role {role}": {
+      "en": "{emoji} → Role {role}",
+      "uk": "{emoji} → Роль {role}"
+    },
+    "Discord attachment · {id}": {
+      "en": "Discord attachment · {id}",
+      "uk": "Вкладення Discord · {id}"
+    },
+    "Primary bot": {
+      "en": "Primary bot",
+      "uk": "Основний бот"
+    },
+    "Language": {
+      "en": "Language",
+      "uk": "Мова"
+    },
+    "MESSAGE": {
+      "en": "MESSAGE",
+      "uk": "ПОВІДОМЛЕННЯ"
+    },
+    "PREVIEW": {
+      "en": "PREVIEW",
+      "uk": "ПОПЕРЕДНІЙ ПЕРЕГЛЯД"
+    },
+    "HISTORY": {
+      "en": "HISTORY",
+      "uk": "ІСТОРІЯ"
+    },
+    "REACTION ROLE": {
+      "en": "REACTION ROLE",
+      "uk": "РОЛЬ ЗА РЕАКЦІЮ"
+    },
+    "ACTIVE": {
+      "en": "ACTIVE",
+      "uk": "АКТИВНІ"
+    },
+    "AUDIT": {
+      "en": "AUDIT",
+      "uk": "ЖУРНАЛ"
+    },
+    "DISCORD CONTROL": {
+      "en": "DISCORD CONTROL",
+      "uk": "КЕРУВАННЯ DISCORD"
+    },
+    "Embed color must use #5865F2 format": {
+      "en": "Embed color must use #5865F2 format",
+      "uk": "Колір embed має бути у форматі #5865F2"
+    },
+    "Embed color is out of range": {
+      "en": "Embed color is out of range",
+      "uk": "Колір embed поза допустимим діапазоном"
+    },
+    "Invalid embed timestamp": {
+      "en": "Invalid embed timestamp",
+      "uk": "Некоректний час embed"
+    },
+    "Embed title exceeds 256 characters": {
+      "en": "Embed title exceeds 256 characters",
+      "uk": "Заголовок embed перевищує 256 символів"
+    },
+    "Embed description exceeds 4096 characters": {
+      "en": "Embed description exceeds 4096 characters",
+      "uk": "Опис embed перевищує 4096 символів"
+    },
+    "Embed author name exceeds 256 characters": {
+      "en": "Embed author name exceeds 256 characters",
+      "uk": "Ім’я автора embed перевищує 256 символів"
+    },
+    "Embed footer exceeds 2048 characters": {
+      "en": "Embed footer exceeds 2048 characters",
+      "uk": "Нижній підпис embed перевищує 2048 символів"
+    },
+    "An embed can have at most 25 fields": {
+      "en": "An embed can have at most 25 fields",
+      "uk": "Embed може містити щонайбільше 25 полів"
+    },
+    "Embed field exceeds the Discord limit": {
+      "en": "Embed field exceeds the Discord limit",
+      "uk": "Поле embed перевищує ліміт Discord"
+    },
+    "Total embed size exceeds 6000 characters": {
+      "en": "Total embed size exceeds 6000 characters",
+      "uk": "Загальний розмір embed перевищує 6000 символів"
+    },
+    "The token belongs to a different Application ID": {
+      "en": "The token belongs to a different Application ID",
+      "uk": "Токен належить іншому Application ID"
+    },
+    "Invalid bot token": {
+      "en": "Invalid bot token",
+      "uk": "Неправильний токен бота"
+    },
+    "Enable Server Members Intent in the Developer Portal": {
+      "en": "Enable Server Members Intent in the Developer Portal",
+      "uk": "Увімкніть Server Members Intent у Developer Portal"
+    },
+    "Discord connection error; reconnect the bot": {
+      "en": "Discord connection error; reconnect the bot",
+      "uk": "Помилка з’єднання з Discord; перепідключіть бота"
+    },
+    "The bot is not connected to Discord{detail}": {
+      "en": "The bot is not connected to Discord{detail}",
+      "uk": "Бот ще не підключений до Discord{detail}"
+    },
+    "The bot is not a member of the selected server": {
+      "en": "The bot is not a member of the selected server",
+      "uk": "Бот не є учасником вибраного Discord-сервера"
+    },
+    "Could not fetch the selected channel": {
+      "en": "Could not fetch the selected channel",
+      "uk": "Не вдалося отримати вибраний канал"
+    },
+    "The selected channel is not a text channel of this server": {
+      "en": "The selected channel is not a text channel of this server",
+      "uk": "Вибраний канал не є текстовим каналом цього сервера"
+    },
+    "Discord allows at most 10 files per message": {
+      "en": "Discord allows at most 10 files per message",
+      "uk": "Discord дозволяє щонайбільше 10 файлів у повідомленні"
+    },
+    "Upload {id} was not found": {
+      "en": "Upload {id} was not found",
+      "uk": "Завантаження {id} не знайдено"
+    },
+    "File {name} is missing from disk": {
+      "en": "File {name} is missing from disk",
+      "uk": "Файл {name} відсутній на диску"
+    },
+    "Message cannot be empty": {
+      "en": "Message cannot be empty",
+      "uk": "Повідомлення не може бути порожнім"
+    },
+    "The bot lacks permission to send messages": {
+      "en": "The bot lacks permission to send messages",
+      "uk": "У бота недостатньо прав для надсилання повідомлення"
+    },
+    "Discord rejected the message: {detail}": {
+      "en": "Discord rejected the message: {detail}",
+      "uk": "Discord відхилив повідомлення: {detail}"
+    },
+    "The message has already been deleted from Discord": {
+      "en": "The message has already been deleted from Discord",
+      "uk": "Повідомлення вже видалено з Discord"
+    },
+    "The bot can only edit its own messages": {
+      "en": "The bot can only edit its own messages",
+      "uk": "Бот може редагувати лише власні повідомлення"
+    },
+    "Discord rejected the changes: {detail}": {
+      "en": "Discord rejected the changes: {detail}",
+      "uk": "Discord відхилив зміни: {detail}"
+    },
+    "The message belongs to another bot": {
+      "en": "The message belongs to another bot",
+      "uk": "Повідомлення належить іншому боту"
+    },
+    "Could not delete the message: insufficient permissions": {
+      "en": "Could not delete the message: insufficient permissions",
+      "uk": "Не вдалося видалити повідомлення: недостатньо прав"
+    },
+    "The Discord bot user is not available yet": {
+      "en": "The Discord bot user is not available yet",
+      "uk": "Discord-користувача бота ще не визначено"
+    },
+    "The bot needs Manage Roles permission": {
+      "en": "The bot needs Manage Roles permission",
+      "uk": "Боту потрібен дозвіл Manage Roles"
+    },
+    "This role cannot be managed manually": {
+      "en": "This role cannot be managed manually",
+      "uk": "Цією роллю не можна керувати вручну"
+    },
+    "The bot role must be above the role being granted": {
+      "en": "The bot role must be above the role being granted",
+      "uk": "Роль бота має бути вище за роль, яку він призначає"
+    },
+    "Granting administrative roles is disabled in the security settings": {
+      "en": "Granting administrative roles is disabled in the security settings",
+      "uk": "Призначення адміністративних ролей вимкнено в налаштуваннях безпеки"
+    },
+    "The selected role was not found": {
+      "en": "The selected role was not found",
+      "uk": "Вибрану роль не знайдено"
+    },
+    "The reaction message was not found": {
+      "en": "The reaction message was not found",
+      "uk": "Повідомлення для реакції не знайдено"
+    },
+    "Discord rejected the emoji. Use a custom emoji available on this server.": {
+      "en": "Discord rejected the emoji. Use a custom emoji available on this server.",
+      "uk": "Discord відхилив емодзі. Використайте власний емодзі, доступний на цьому сервері."
+    },
+    "Bot profile was not found": {
+      "en": "Bot profile was not found",
+      "uk": "Профіль бота не знайдено"
+    },
+    "Bot is disabled or its token is missing. Configure the profile and env, then restart the app.": {
+      "en": "Bot is disabled or its token is missing. Configure the profile and env, then restart the app.",
+      "uk": "Бота вимкнено або токен відсутній. Налаштуйте профіль і env, потім перезапустіть застосунок."
+    },
+    "Profile already exists": {
+      "en": "Profile already exists",
+      "uk": "Профіль уже існує"
+    },
+    "Profile was not found": {
+      "en": "Profile was not found",
+      "uk": "Профіль не знайдено"
+    },
+    "The internal profile ID cannot be changed": {
+      "en": "The internal profile ID cannot be changed",
+      "uk": "Внутрішній ID профілю змінювати не можна"
+    },
+    "File exceeds the {limit} MB limit": {
+      "en": "File exceeds the {limit} MB limit",
+      "uk": "Файл перевищує ліміт {limit} МБ"
+    },
+    "Message was not found": {
+      "en": "Message was not found",
+      "uk": "Повідомлення не знайдено"
+    },
+    "A rule already exists for this message and emoji": {
+      "en": "A rule already exists for this message and emoji",
+      "uk": "Для цього повідомлення та емодзі правило вже існує"
+    },
+    "Rule was not found": {
+      "en": "Rule was not found",
+      "uk": "Правило не знайдено"
+    },
+    "Invalid request origin": {
+      "en": "Invalid request origin",
+      "uk": "Неприпустиме джерело запиту"
+    },
+    "Discord ID must contain only digits": {
+      "en": "Discord ID must contain only digits",
+      "uk": "Discord ID має містити лише цифри"
+    },
+    "Emoji is required": {
+      "en": "Emoji is required",
+      "uk": "Потрібен емодзі"
+    },
+    "Message content is limited to 2000 characters": {
+      "en": "Message content is limited to 2000 characters",
+      "uk": "Текст повідомлення обмежено 2000 символами"
+    },
+    "Discord allows at most 10 attachments per message": {
+      "en": "Discord allows at most 10 attachments per message",
+      "uk": "Discord дозволяє щонайбільше 10 вкладень у повідомленні"
+    },
+    "Invalid input": {
+      "en": "Invalid input",
+      "uk": "Некоректні дані"
+    },
+    "This field is required": {
+      "en": "This field is required",
+      "uk": "Це поле обов’язкове"
+    },
+    "This value is too short": {
+      "en": "This value is too short",
+      "uk": "Це значення надто коротке"
+    },
+    "This value is too long": {
+      "en": "This value is too long",
+      "uk": "Це значення надто довге"
+    },
+    "This value has an invalid format": {
+      "en": "This value has an invalid format",
+      "uk": "Це значення має неправильний формат"
+    },
+    "This value is below the allowed minimum": {
+      "en": "This value is below the allowed minimum",
+      "uk": "Це значення менше за допустимий мінімум"
+    },
+    "This value exceeds the allowed maximum": {
+      "en": "This value exceeds the allowed maximum",
+      "uk": "Це значення перевищує допустимий максимум"
+    },
+    "A string is required": {
+      "en": "A string is required",
+      "uk": "Потрібен текстовий рядок"
+    },
+    "An integer is required": {
+      "en": "An integer is required",
+      "uk": "Потрібне ціле число"
+    },
+    "A boolean is required": {
+      "en": "A boolean is required",
+      "uk": "Потрібне логічне значення"
+    },
+    "Invalid JSON": {
+      "en": "Invalid JSON",
+      "uk": "Некоректний JSON"
+    },
+    "Message created": {
+      "en": "Message created",
+      "uk": "Повідомлення створено"
+    },
+    "Upload created": {
+      "en": "Upload created",
+      "uk": "Файл завантажено"
+    },
+    "Profile saved": {
+      "en": "Profile saved",
+      "uk": "Профіль збережено"
+    },
+    "Messages imported": {
+      "en": "Messages imported",
+      "uk": "Повідомлення імпортовано"
+    },
+    "Reaction rule deleted": {
+      "en": "Reaction rule deleted",
+      "uk": "Правило реакції видалено"
+    },
+    "Role granted": {
+      "en": "Role granted",
+      "uk": "Роль призначено"
+    },
+    "Role removed": {
+      "en": "Role removed",
+      "uk": "Роль знято"
+    },
+    "Record ID": {
+      "en": "Record ID",
+      "uk": "ID запису"
+    },
+    "Upload ID": {
+      "en": "Upload ID",
+      "uk": "ID завантаження"
+    },
+    "File size": {
+      "en": "File size",
+      "uk": "Розмір файлу"
+    },
+    "User ID": {
+      "en": "User ID",
+      "uk": "ID користувача"
+    },
+    "Channels": {
+      "en": "Channels",
+      "uk": "Канали"
+    },
+    "Scanned": {
+      "en": "Scanned",
+      "uk": "Перевірено"
+    },
+    "Imported": {
+      "en": "Imported",
+      "uk": "Імпортовано"
+    },
+    "Created": {
+      "en": "Created",
+      "uk": "Створено"
+    },
+    "Updated": {
+      "en": "Updated",
+      "uk": "Оновлено"
+    },
+    "Skipped channels": {
+      "en": "Skipped channels",
+      "uk": "Пропущені канали"
+    },
+    "Request failed": {
+      "en": "Request failed",
+      "uk": "Запит не виконано"
+    },
+    "Network error. Check your connection to the panel.": {
+      "en": "Network error. Check your connection to the panel.",
+      "uk": "Помилка мережі. Перевірте з’єднання з панеллю."
+    },
+    "Not found": {
+      "en": "Not found",
+      "uk": "Не знайдено"
+    },
+    "Method not allowed": {
+      "en": "Method not allowed",
+      "uk": "Метод не дозволено"
+    },
+    "Sign out": {
+      "en": "Sign out",
+      "uk": "Вийти"
+    },
+    "Users and access": {
+      "en": "Users and access",
+      "uk": "Користувачі та доступ"
+    },
+    "Users get no bot access until you grant it. You can add a Discord user ID before their first sign-in.": {
+      "en": "Users get no bot access until you grant it. You can add a Discord user ID before their first sign-in.",
+      "uk": "Користувачі не мають доступу до ботів, доки ви його не надасте. Discord ID можна додати до першого входу."
+    },
+    "Discord User ID": {
+      "en": "Discord User ID",
+      "uk": "Discord ID користувача"
+    },
+    "Bot": {
+      "en": "Bot",
+      "uk": "Бот"
+    },
+    "Access": {
+      "en": "Access",
+      "uk": "Доступ"
+    },
+    "Viewer": {
+      "en": "Viewer",
+      "uk": "Спостерігач"
+    },
+    "Operator": {
+      "en": "Operator",
+      "uk": "Керівник"
+    },
+    "No access": {
+      "en": "No access",
+      "uk": "Без доступу"
+    },
+    "Save access": {
+      "en": "Save access",
+      "uk": "Зберегти доступ"
+    },
+    "Sign in with Discord": {
+      "en": "Sign in with Discord",
+      "uk": "Увійти через Discord"
+    },
+    "Sign in with Discord to access your assigned bots.": {
+      "en": "Sign in with Discord to access your assigned bots.",
+      "uk": "Увійдіть через Discord, щоб працювати з призначеними вам ботами."
+    },
+    "Signing in does not automatically grant access. The panel owner assigns permissions.": {
+      "en": "Signing in does not automatically grant access. The panel owner assigns permissions.",
+      "uk": "Вхід не надає доступ автоматично. Права призначає власник панелі."
+    },
+    "Local administrator": {
+      "en": "Local administrator",
+      "uk": "Локальний адміністратор"
+    },
+    "You have no assigned bots. Ask the panel owner for access.": {
+      "en": "You have no assigned bots. Ask the panel owner for access.",
+      "uk": "Вам не призначено жодного бота. Зверніться до власника панелі по доступ."
+    },
+    "You have read-only access to this bot.": {
+      "en": "You have read-only access to this bot.",
+      "uk": "Ви маєте доступ до цього бота лише для перегляду."
+    },
+    "No bots available": {
+      "en": "No bots available",
+      "uk": "Немає доступних ботів"
+    },
+    "No users yet.": {
+      "en": "No users yet.",
+      "uk": "Користувачів ще немає."
+    },
+    "Owner": {
+      "en": "Owner",
+      "uk": "Власник"
+    },
+    "Blocked": {
+      "en": "Blocked",
+      "uk": "Заблоковано"
+    },
+    "Edit access": {
+      "en": "Edit access",
+      "uk": "Змінити доступ"
+    },
+    "Unblock": {
+      "en": "Unblock",
+      "uk": "Розблокувати"
+    },
+    "Block user": {
+      "en": "Block user",
+      "uk": "Заблокувати користувача"
+    },
+    "Unblock this user?": {
+      "en": "Unblock this user?",
+      "uk": "Розблокувати цього користувача?"
+    },
+    "Block this user and end all their sessions?": {
+      "en": "Block this user and end all their sessions?",
+      "uk": "Заблокувати цього користувача та завершити всі його сесії?"
+    },
+    "Access saved": {
+      "en": "Access saved",
+      "uk": "Доступ збережено"
+    },
+    "Access changed": {
+      "en": "Access changed",
+      "uk": "Доступ змінено"
+    },
+    "User blocked": {
+      "en": "User blocked",
+      "uk": "Користувача заблоковано"
+    },
+    "User unblocked": {
+      "en": "User unblocked",
+      "uk": "Користувача розблоковано"
+    },
+    "Bot / system": {
+      "en": "Bot / system",
+      "uk": "Бот / система"
+    },
+    "Actor: {actor}": {
+      "en": "Actor: {actor}",
+      "uk": "Виконавець: {actor}"
+    },
+    "Owner access is required": {
+      "en": "Owner access is required",
+      "uk": "Потрібні права власника"
+    },
+    "Sign in to continue": {
+      "en": "Sign in to continue",
+      "uk": "Увійдіть, щоб продовжити"
+    },
+    "This bot is available in read-only mode": {
+      "en": "This bot is available in read-only mode",
+      "uk": "Цей бот доступний лише для перегляду"
+    },
+    "Too many sign-in attempts. Try again shortly.": {
+      "en": "Too many sign-in attempts. Try again shortly.",
+      "uk": "Забагато спроб входу. Спробуйте трохи згодом."
+    },
+    "Your access to the panel has been blocked": {
+      "en": "Your access to the panel has been blocked",
+      "uk": "Ваш доступ до панелі заблоковано"
+    },
+    "Owner access cannot be changed here": {
+      "en": "Owner access cannot be changed here",
+      "uk": "Права власника не можна змінити тут"
+    },
+    "Discord sign-in failed. Please try again.": {
+      "en": "Discord sign-in failed. Please try again.",
+      "uk": "Не вдалося увійти через Discord. Спробуйте ще раз."
+    },
+    "The sign-in link expired or is invalid. Please try again.": {
+      "en": "The sign-in link expired or is invalid. Please try again.",
+      "uk": "Посилання для входу прострочене або недійсне. Спробуйте ще раз."
+    },
+    "Discord sign-in was cancelled.": {
+      "en": "Discord sign-in was cancelled.",
+      "uk": "Вхід через Discord скасовано."
+    },
+    "Discord login is not enabled": {
+      "en": "Discord login is not enabled",
+      "uk": "Вхід через Discord не увімкнено"
+    },
+    "Open the panel using its configured address": {
+      "en": "Open the panel using its configured address",
+      "uk": "Відкрийте панель за адресою, вказаною в її налаштуваннях"
+    },
+    "Invalid security token. Refresh the page and try again.": {
+      "en": "Invalid security token. Refresh the page and try again.",
+      "uk": "Недійсний токен безпеки. Оновіть сторінку та спробуйте ще раз."
+    },
+    "Discord sign-in is not configured. Local administrator mode is active.": {
+      "en": "Discord sign-in is not configured. Local administrator mode is active.",
+      "uk": "Вхід через Discord не налаштовано. Активний режим локального адміністратора."
+    }
+  },
+  "sources": {
+    "Действия от имени бота": "Act as bot",
+    "Добавить бота": "Add bot",
+    "Настройки": "Settings",
+    "Переподключить": "Reconnect",
+    "Внутренний ID": "Internal ID",
+    "Название": "Name",
+    "Discord Application ID (необязательно)": "Discord Application ID (optional)",
+    "Имя env-переменной с токеном": "Token environment variable",
+    "Токен запишите в локальный .env. После изменения .env перезапустите панель.": "Save the token in your local .env. Restart the panel after changing .env.",
+    "Включён": "Enabled",
+    "Разрешить выдачу административных ролей": "Allow granting administrative roles",
+    "Сохранить профиль": "Save profile",
+    "Закрыть": "Close",
+    "Разделы": "Sections",
+    "Новое сообщение": "New message",
+    "Отправленные сообщения": "Sent messages",
+    "Отправленные": "Sent",
+    "Роли за реакции": "Reaction roles",
+    "Журнал": "Audit log",
+    "Создать публикацию": "Create post",
+    "Отменить правку": "Cancel editing",
+    "Сервер": "Server",
+    "Канал": "Channel",
+    "Выберите сервер": "Select a server",
+    "Сначала выберите сервер": "Select a server first",
+    "Текст сообщения": "Message text",
+    "Форматирование текста": "Text formatting",
+    "Жирный": "Bold",
+    "Курсив": "Italic",
+    "Подчёркнутый": "Underline",
+    "Зачёркнутый": "Strikethrough",
+    "Спойлер": "Spoiler",
+    "Код": "Code",
+    "Цитата": "Quote",
+    "Маркированный список": "List",
+    "Обычный URL с автоматическим превью Discord": "Plain URL with automatic Discord preview",
+    "🔗 URL + превью": "🔗 URL + preview",
+    "Ссылка, скрытая за текстом": "Link with custom text",
+    "↗ Текст-ссылка": "↗ Text link",
+    "Текст над embed, упоминания, ссылки…": "Text above the embed, mentions, links…",
+    "Вставить упоминание роли": "Insert role mention",
+    "Вставить ссылку на канал": "Insert channel link",
+    "@ Вставить роль": "@ Insert role",
+    "# Вставить канал": "# Insert channel",
+    "Роль и everyone включат реальные упоминания": "Roles and everyone enable actual mentions",
+    "Добавить embed": "Add embed",
+    "Заголовок": "Title",
+    "Заголовок новости": "Post title",
+    "Цвет": "Color",
+    "Ссылка заголовка": "Title URL",
+    "Описание": "Description",
+    "Форматирование описания embed": "Embed description formatting",
+    "Обычный кликабельный URL": "Plain clickable URL",
+    "Поддерживается Discord Markdown": "Discord Markdown is supported",
+    "Автор, изображения и footer": "Author, images and footer",
+    "Имя автора": "Author name",
+    "Ссылка автора": "Author URL",
+    "Иконка автора": "Author icon",
+    "Большая картинка по URL": "Large image URL",
+    "Thumbnail по URL": "Thumbnail URL",
+    "Footer": "Footer",
+    "Иконка footer": "Footer icon",
+    "Добавить текущее время": "Add current time",
+    "Поля embed": "Embed fields",
+    "+ Поле": "+ Field",
+    "Выбрать изображения или файлы": "Choose images or files",
+    "До 10 файлов. Для картинки внутри embed отметь «Главная».": "Up to 10 files. Select “Main” to use an image inside the embed.",
+    "Разрешить реальные @упоминания": "Allow actual @mentions",
+    "Отправить сообщение": "Send message",
+    "БОТ": "BOT",
+    "Сегодня, 12:00": "Today, 12:00",
+    "Описание публикации появится здесь.": "Your post description will appear here.",
+    "Предпросмотр загруженной картинки": "Uploaded image preview",
+    "Обновить": "Refresh",
+    "Импорт сообщений из Discord": "Import messages from Discord",
+    "Подтягивает только сообщения, отправленные этим же ботом.": "Imports only messages sent by this bot.",
+    "Все доступные каналы": "All available channels",
+    "Последних сообщений на канал": "Recent messages per channel",
+    "Сканировать всю историю": "Scan entire history",
+    "Импортировать": "Import",
+    "Пока нет сообщений.": "No messages yet.",
+    "Новое правило": "New rule",
+    "ID сообщения": "Message ID",
+    "Эмодзи": "Emoji",
+    "✅ или кастомный эмодзи": "✅ or custom emoji",
+    "Выбрать эмодзи": "Choose emoji",
+    "Поиск: heart, fire, smile…": "Search: heart, fire, smile…",
+    "Загрузка каталога…": "Loading catalog…",
+    "Кастомный эмодзи сервера также можно вставить из Discord вручную.": "You can also paste a custom server emoji from Discord.",
+    "Роль": "Role",
+    "Снимать роль при удалении реакции": "Remove role when reaction is removed",
+    "Создать правило": "Create rule",
+    "Правила": "Rules",
+    "Правил пока нет.": "No rules yet.",
+    "Последние действия": "Recent actions",
+    "Журнал пуст.": "The audit log is empty.",
+    "Упоминания Discord": "Discord mentions",
+    "Подключение…": "Connecting…",
+    "Выберите профиль бота": "Select a bot profile",
+    "Бот отключён": "Bot disabled",
+    "Укажите токен в .env и перезапустите панель": "Set the token in .env and restart the panel",
+    "Нет подключения": "Not connected",
+    "Загрузка…": "Loading…",
+    "Выберите канал": "Select a channel",
+    "Выберите роль": "Select a role",
+    "{count} стандартных Unicode-эмодзи": "{count} standard Unicode emoji",
+    "Ничего не найдено": "Nothing found",
+    "Загрузка полного Unicode-каталога…": "Loading the full Unicode catalog…",
+    "У бота нет права Send Messages в этом канале.": "The bot lacks Send Messages in this channel.",
+    "У бота нет права Embed Links - карточки ссылок и embed не появятся.": "The bot lacks Embed Links; link previews and embeds will not appear.",
+    "жирный текст": "bold text",
+    "курсив": "italic text",
+    "подчёркнутый текст": "underlined text",
+    "зачёркнутый текст": "strikethrough text",
+    "скрытый текст": "hidden text",
+    "код": "code",
+    "текст цитаты": "quote text",
+    "элемент списка": "list item",
+    "URL для автоматического превью Discord": "URL for automatic Discord preview",
+    "Отображаемый текст ссылки": "Link display text",
+    "Открыть ссылку": "Open link",
+    "Адрес ссылки": "Link URL",
+    "текст ссылки": "link text",
+    "Все участники": "All members",
+    "Участники онлайн": "Online members",
+    "Значение": "Value",
+    "В строку": "Inline",
+    "Удалить": "Delete",
+    "сейчас": "now",
+    "В одном сообщении может быть не больше 10 файлов": "A message can have at most 10 files",
+    "Загрузка {name}…": "Uploading {name}…",
+    "Главная": "Main",
+    "Вложение Discord": "Discord attachment",
+    "Сохраняю…": "Saving…",
+    "Отправляю…": "Sending…",
+    "Сообщение обновлено": "Message updated",
+    "Сообщение отправлено": "Message sent",
+    "Сканировать полную историю всех доступных каналов? Это может занять много времени.": "Scan the entire history of all available channels? This may take a long time.",
+    "Сканирую историю Discord… Не закрывай страницу.": "Scanning Discord history… Keep this page open.",
+    " Пропущены каналы без доступа: {channels}.": " Skipped channels without access: {channels}.",
+    "Найдено {imported}: новых {created}, обновлено {updated}. Проверено сообщений: {scanned}.{skipped}": "Found {imported}: {created} new, {updated} updated. Messages scanned: {scanned}.{skipped}",
+    "Импортировано сообщений: {count}": "Messages imported: {count}",
+    "Сообщение с файлом": "Message with attachment",
+    "Править": "Edit",
+    "Открыть": "Open",
+    "Сохранённый файл · {id}": "Saved file · {id}",
+    "Редактировать публикацию": "Edit post",
+    "Сохранить изменения": "Save changes",
+    "Удалить сообщение {id} из Discord?": "Delete message {id} from Discord?",
+    "Сообщение удалено": "Message deleted",
+    "Создаю…": "Creating…",
+    "Готово": "Done",
+    "Правило реакции создано": "Reaction rule created",
+    "выдача и снятие": "Grant and remove",
+    "только выдача": "Grant only",
+    "Основной бот": "Primary bot",
+    "Цвет embed должен быть в формате #5865F2": "Embed color must use #5865F2 format",
+    "Цвет embed находится вне допустимого диапазона": "Embed color is out of range",
+    "Некорректное время embed": "Invalid embed timestamp",
+    "Заголовок embed длиннее 256 символов": "Embed title exceeds 256 characters",
+    "Описание embed длиннее 4096 символов": "Embed description exceeds 4096 characters",
+    "Имя автора embed длиннее 256 символов": "Embed author name exceeds 256 characters",
+    "Footer embed длиннее 2048 символов": "Embed footer exceeds 2048 characters",
+    "В embed может быть не больше 25 полей": "An embed can have at most 25 fields",
+    "Поле embed превышает лимит Discord": "Embed field exceeds the Discord limit",
+    "Общий размер embed превышает 6000 символов": "Total embed size exceeds 6000 characters",
+    "Токен принадлежит другому Application ID": "The token belongs to a different Application ID",
+    "Неверный токен бота": "Invalid bot token",
+    "Включите Server Members Intent в Developer Portal": "Enable Server Members Intent in the Developer Portal",
+    "Ошибка подключения к Discord; выполните переподключение": "Discord connection error; reconnect the bot",
+    "Бот ещё не подключён к Discord{detail}": "The bot is not connected to Discord{detail}",
+    "Бот не состоит на выбранном Discord-сервере": "The bot is not a member of the selected server",
+    "Не удалось получить выбранный канал": "Could not fetch the selected channel",
+    "Выбранный канал не является текстовым каналом сервера": "The selected channel is not a text channel of this server",
+    "Discord принимает не больше 10 файлов в сообщении": "Discord allows at most 10 files per message",
+    "Загрузка {id} не найдена": "Upload {id} was not found",
+    "Файл {name} отсутствует на диске": "File {name} is missing from disk",
+    "Сообщение не может быть пустым": "Message cannot be empty",
+    "У бота недостаточно прав для отправки сообщения": "The bot lacks permission to send messages",
+    "Discord отклонил сообщение: {detail}": "Discord rejected the message: {detail}",
+    "Сообщение уже удалено из Discord": "The message has already been deleted from Discord",
+    "Бот может редактировать только собственные сообщения": "The bot can only edit its own messages",
+    "Discord отклонил изменения: {detail}": "Discord rejected the changes: {detail}",
+    "Сообщение принадлежит другому боту": "The message belongs to another bot",
+    "Не удалось удалить сообщение: недостаточно прав": "Could not delete the message: insufficient permissions",
+    "Discord-пользователь бота ещё не определён": "The Discord bot user is not available yet",
+    "Боту необходимо право Manage Roles": "The bot needs Manage Roles permission",
+    "Этой ролью нельзя управлять вручную": "This role cannot be managed manually",
+    "Роль бота должна находиться выше выдаваемой роли": "The bot role must be above the role being granted",
+    "Выдача административных ролей отключена настройками безопасности": "Granting administrative roles is disabled in the security settings",
+    "Выбранная роль не найдена": "The selected role was not found",
+    "Сообщение для реакции не найдено": "The reaction message was not found",
+    "Discord не принял эмодзи. Для кастомного эмодзи используй его на сервере.": "Discord rejected the emoji. Use a custom emoji available on this server.",
+    "Профиль бота не найден": "Bot profile was not found",
+    "Бот отключён или отсутствует токен. Настройте профиль и env, затем перезапустите приложение.": "Bot is disabled or its token is missing. Configure the profile and env, then restart the app.",
+    "Профиль уже существует": "Profile already exists",
+    "Профиль не найден": "Profile was not found",
+    "Внутренний ID профиля менять нельзя": "The internal profile ID cannot be changed",
+    "Файл больше лимита {limit} МБ": "File exceeds the {limit} MB limit",
+    "Сообщение не найдено": "Message was not found",
+    "Для этого сообщения и эмодзи правило уже существует": "A rule already exists for this message and emoji",
+    "Правило не найдено": "Rule was not found",
+    "Invalid request origin": "Invalid request origin",
+    "Discord ID must contain only digits": "Discord ID must contain only digits",
+    "Emoji is required": "Emoji is required",
+    "Message content is limited to 2000 characters": "Message content is limited to 2000 characters",
+    "Discord allows at most 10 attachments per message": "Discord allows at most 10 attachments per message",
+    "Not Found": "Not found",
+    "Method Not Allowed": "Method not allowed"
+  }
+}

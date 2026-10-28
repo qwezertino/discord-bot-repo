@@ -1,0 +1,17 @@
+[Unit]
+Description=Discord bot control panel
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=CHANGE_ME
+WorkingDirectory=/CHANGE/ME/discord-bot-panel
+ExecStart=/CHANGE/ME/discord-bot-panel/.venv/bin/python run.py
+Restart=on-failure
+RestartSec=5
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

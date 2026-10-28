@@ -1,0 +1,26 @@
+from __future__ import annotations
+
+import logging
+
+import uvicorn
+
+from app.config import Settings
+from app.web import create_app
+
+
+def main() -> None:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+    )
+    settings = Settings.load()
+    uvicorn.run(
+        create_app(settings),
+        host=settings.panel_host,
+        port=settings.panel_port,
+        log_level="info",
+    )
+
+
+if __name__ == "__main__":
+    main()

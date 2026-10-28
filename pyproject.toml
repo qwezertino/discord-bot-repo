@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "discord-bot-panel"
+version = "0.1.0"
+description = "Self-hosted Discord publishing and reaction-role panel"
+requires-python = ">=3.12"
+dependencies = [
+  "discord.py>=2.5,<3",
+  "aiohttp>=3.10,<4",
+  "emoji>=2.14,<3",
+  "fastapi>=0.115,<1",
+  "jinja2>=3.1,<4",
+  "python-dotenv>=1.0,<2",
+  "python-multipart>=0.0.20,<1",
+  "uvicorn>=0.34,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.setuptools.package-data]
+app = ["static/*", "templates/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

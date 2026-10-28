@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Discord Bot Panel</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow"><span data-i18n="DISCORD CONTROL">КЕРУВАННЯ DISCORD</span></p>
+      <h1>Discord Bot Panel</h1>
+    </div>
+    <div class="topbar-actions">
+      <div class="account-controls"><span id="account-name"></span>
+        <button id="manage-users" type="button" class="button ghost hidden" data-i18n="Users and access">Користувачі та доступ</button>
+        <button id="logout" type="button" class="button ghost hidden" data-i18n="Sign out">Вийти</button>
+      </div>
+      <label class="language-picker"><span data-i18n="Language">Мова</span>
+        <select id="language-select" aria-label="Мова" data-i18n-aria-label="Language">
+          <option value="uk">Українська</option>
+          <option value="en">English</option>
+        </select>
+      </label>
+    <div id="connection" class="connection"><span></span><strong><span data-i18n="Connecting…">Підключення…</span></strong></div>
+    </div>
+  </header>
+
+  <div id="auth-mode-notice" class="panel hidden" data-i18n="Discord sign-in is not configured. Local administrator mode is active.">Вхід через Discord не налаштовано. Активний режим локального адміністратора.</div>
+  <div id="access-notice" class="panel hidden" role="status"></div>
+  <section class="panel bot-panel">
+    <label><span data-i18n="Act as bot">Діяти від імені бота</span><select id="bot-select"></select></label>
+    <button id="bot-new" type="button" class="button ghost"><span data-i18n="Add bot">Додати бота</span></button>
+    <button id="bot-edit" type="button" class="button ghost"><span data-i18n="Settings">Налаштування</span></button>
+    <button id="bot-reconnect" type="button" class="button ghost"><span data-i18n="Reconnect">Перепідключити</span></button>
+    <form id="bot-form" class="stack hidden">
+      <label><span data-i18n="Internal ID">Внутрішній ID</span><input id="bot-id" required pattern="[a-z][a-z0-9_-]{0,63}"></label>
+      <label><span data-i18n="Name">Назва</span><input id="bot-name" required maxlength="100"></label>
+      <label><span data-i18n="Discord Application ID (optional)">Discord Application ID (необов’язково)</span><input id="bot-application" inputmode="numeric"></label>
+      <label><span data-i18n="Token environment variable">Змінна середовища з токеном</span><input id="bot-env" required pattern="[A-Z][A-Z0-9_]{0,127}" placeholder="IRON_CROWN_BOT_TOKEN"></label>
+      <p><span data-i18n="Save the token in your local .env. Restart the panel after changing .env.">Запишіть токен у локальний .env. Після зміни .env перезапустіть панель.</span></p>
+      <label class="switch-row"><input id="bot-enabled" type="checkbox" checked><span data-i18n="Enabled">Увімкнено</span></label>
+      <label class="switch-row"><input id="bot-privileged" type="checkbox"><span data-i18n="Allow granting administrative roles">Дозволити призначення адміністративних ролей</span></label>
+      <button type="submit" class="button primary"><span data-i18n="Save profile">Зберегти профіль</span></button>
+      <button id="bot-cancel" type="button" class="button ghost"><span data-i18n="Close">Закрити</span></button>
+    </form>
+  </section>
+  <nav class="tabs" aria-label="Розділи" data-i18n-aria-label="Sections">
+    <button class="tab active" data-tab="composer"><span data-i18n="New message">Нове повідомлення</span></button>
+    <button class="tab" data-tab="messages"><span data-i18n="Sent">Надіслані</span></button>
+    <button class="tab" data-tab="roles"><span data-i18n="Reaction roles">Ролі за реакції</span></button>
+    <button id="users-tab" class="tab hidden" data-tab="users"><span data-i18n="Users and access">Користувачі та доступ</span></button>
+    <button class="tab" data-tab="audit"><span data-i18n="Audit log">Журнал дій</span></button>
+  </nav>
+
+  <main>
+    <section id="tab-composer" class="tab-panel active">
+      <div class="composer-layout">
+        <form id="message-form" class="panel stack">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span data-i18n="MESSAGE">ПОВІДОМЛЕННЯ</span></p>
+              <h2 id="composer-title"><span data-i18n="Create post">Створити публікацію</span></h2>
+            </div>
+            <button id="cancel-edit" class="button ghost hidden" type="button"><span data-i18n="Cancel editing">Скасувати редагування</span></button>
+          </div>
+
+          <div class="grid two">
+            <label><span data-i18n="Server">Сервер</span>
+              <select id="guild" required><option value="" data-i18n="Select a server">Виберіть сервер</option></select>
+            </label>
+            <label><span data-i18n="Channel">Канал</span>
+              <select id="channel" required disabled><option value="" data-i18n="Select a server first">Спочатку виберіть сервер</option></select>
+              <span id="channel-permission-hint" class="field-hint hidden"></span>
+            </label>
+          </div>
+
+          <label><span data-i18n="Message text">Текст повідомлення</span></label>
+          <div class="text-editor">
+            <div class="markdown-toolbar" data-target="content" aria-label="Форматування тексту" data-i18n-aria-label="Text formatting">
+              <button type="button" data-format="bold" title="Жирний" data-i18n-title="Bold"><strong>B</strong></button>
+              <button type="button" data-format="italic" title="Курсив" data-i18n-title="Italic"><em>I</em></button>
+              <button type="button" data-format="underline" title="Підкреслення" data-i18n-title="Underline"><u>U</u></button>
+              <button type="button" data-format="strike" title="Закреслення" data-i18n-title="Strikethrough"><s>S</s></button>
+              <button type="button" data-format="spoiler" title="Спойлер" data-i18n-title="Spoiler">◧</button>
+              <button type="button" data-format="code" title="Код" data-i18n-title="Code">&lt;/&gt;</button>
+              <button type="button" data-format="quote" title="Цитата" data-i18n-title="Quote">❯</button>
+              <button type="button" data-format="list" title="Список" data-i18n-title="List">☷</button>
+              <button type="button" data-format="raw-link" title="Звичайний URL з автоматичним прев’ю Discord" data-i18n-title="Plain URL with automatic Discord preview"><span data-i18n="🔗 URL + preview">🔗 URL + прев’ю</span></button>
+              <button type="button" data-format="link" title="Посилання з власним текстом" data-i18n-title="Link with custom text"><span data-i18n="↗ Text link">↗ Текстове посилання</span></button>
+            </div>
+            <textarea id="content" maxlength="2000" rows="5" placeholder="Текст над embed, згадки, посилання…" data-i18n-placeholder="Text above the embed, mentions, links…"></textarea>
+            <span class="counter"><span id="content-count">0</span>/2000</span>
+          </div>
+
+          <div class="mention-toolbar">
+            <button id="insert-everyone" class="mention-button" type="button">@everyone</button>
+            <select id="mention-role" disabled aria-label="Вставити згадку ролі" data-i18n-aria-label="Insert role mention">
+              <option value="" data-i18n="@ Insert role">@ Вставити роль</option>
+            </select>
+            <select id="mention-channel" disabled aria-label="Вставити посилання на канал" data-i18n-aria-label="Insert channel link">
+              <option value="" data-i18n="# Insert channel"># Вставити канал</option>
+            </select>
+            <span data-i18n="Roles and everyone enable actual mentions">Роль і everyone увімкнуть справжні згадки</span>
+          </div>
+
+          <label class="switch-row">
+            <input id="embed-enabled" type="checkbox" checked>
+            <span data-i18n="Add embed">Додати embed</span>
+          </label>
+
+          <div id="embed-editor" class="embed-editor stack">
+            <div class="grid title-color">
+              <label><span data-i18n="Title">Заголовок</span>
+                <input id="embed-title" maxlength="256" placeholder="Заголовок публікації" data-i18n-placeholder="Post title">
+              </label>
+              <label><span data-i18n="Color">Колір</span>
+                <input id="embed-color" type="color" value="#d5ff38">
+              </label>
+            </div>
+            <label><span data-i18n="Title URL">Посилання заголовка</span>
+              <input id="embed-url" type="url" placeholder="https://…">
+            </label>
+            <label><span data-i18n="Description">Опис</span></label>
+            <div class="text-editor">
+              <div class="markdown-toolbar" data-target="embed-description" aria-label="Форматування опису embed" data-i18n-aria-label="Embed description formatting">
+                <button type="button" data-format="bold" title="Жирний" data-i18n-title="Bold"><strong>B</strong></button>
+                <button type="button" data-format="italic" title="Курсив" data-i18n-title="Italic"><em>I</em></button>
+                <button type="button" data-format="underline" title="Підкреслення" data-i18n-title="Underline"><u>U</u></button>
+                <button type="button" data-format="strike" title="Закреслення" data-i18n-title="Strikethrough"><s>S</s></button>
+                <button type="button" data-format="spoiler" title="Спойлер" data-i18n-title="Spoiler">◧</button>
+                <button type="button" data-format="code" title="Код" data-i18n-title="Code">&lt;/&gt;</button>
+                <button type="button" data-format="quote" title="Цитата" data-i18n-title="Quote">❯</button>
+                <button type="button" data-format="list" title="Список" data-i18n-title="List">☷</button>
+                <button type="button" data-format="raw-link" title="Звичайне клікабельне посилання" data-i18n-title="Plain clickable URL">🔗 URL</button>
+                <button type="button" data-format="link" title="Посилання з власним текстом" data-i18n-title="Link with custom text"><span data-i18n="↗ Text link">↗ Текстове посилання</span></button>
+              </div>
+              <textarea id="embed-description" maxlength="4096" rows="8" placeholder="Підтримується Discord Markdown" data-i18n-placeholder="Discord Markdown is supported"></textarea>
+            </div>
+
+            <details>
+              <summary><span data-i18n="Author, images and footer">Автор, зображення та нижній підпис</span></summary>
+              <div class="details-body stack">
+                <div class="grid two">
+                  <label><span data-i18n="Author name">Ім’я автора</span><input id="author-name" maxlength="256"></label>
+                  <label><span data-i18n="Author URL">Посилання автора</span><input id="author-url" type="url" placeholder="https://…"></label>
+                </div>
+                <label><span data-i18n="Author icon">Іконка автора</span><input id="author-icon" type="url" placeholder="https://…"></label>
+                <label><span data-i18n="Large image URL">Посилання на велике зображення</span><input id="image-url" type="url" placeholder="https://…"></label>
+                <label><span data-i18n="Thumbnail URL">Посилання на мініатюру</span><input id="thumbnail-url" type="url" placeholder="https://…"></label>
+                <div class="grid two">
+                  <label><span data-i18n="Footer">Нижній підпис</span><input id="footer-text" maxlength="2048"></label>
+                  <label><span data-i18n="Footer icon">Іконка нижнього підпису</span><input id="footer-icon" type="url" placeholder="https://…"></label>
+                </div>
+                <label class="switch-row"><input id="embed-timestamp" type="checkbox"><span data-i18n="Add current time">Додати поточний час</span></label>
+              </div>
+            </details>
+
+            <div class="fields-heading">
+              <strong><span data-i18n="Embed fields">Поля embed</span></strong>
+              <button id="add-field" type="button" class="button ghost small"><span data-i18n="+ Field">+ Поле</span></button>
+            </div>
+            <div id="embed-fields" class="stack compact"></div>
+          </div>
+
+          <div class="upload-zone">
+            <label for="files" class="upload-button"><span data-i18n="Choose images or files">Вибрати зображення або файли</span></label>
+            <input id="files" type="file" multiple hidden>
+            <p><span data-i18n="Up to 10 files. Select “Main” to use an image inside the embed.">До 10 файлів. Щоб додати зображення в embed, позначте «Головне».</span></p>
+            <div id="uploads" class="uploads"></div>
+          </div>
+
+          <label class="switch-row warning-switch">
+            <input id="allow-mentions" type="checkbox">
+            <span data-i18n="Allow actual @mentions">Дозволити справжні @згадки</span>
+          </label>
+
+          <div class="actions">
+            <button id="submit-message" class="button primary" type="submit"><span data-i18n="Send message">Надіслати повідомлення</span></button>
+            <span id="form-status" class="form-status"></span>
+          </div>
+        </form>
+
+        <aside class="preview-wrap">
+          <p class="eyebrow"><span data-i18n="PREVIEW">ПОПЕРЕДНІЙ ПЕРЕГЛЯД</span></p>
+          <div class="discord-preview">
+            <div class="avatar">P</div>
+            <div class="preview-message">
+              <div><strong id="preview-bot">Discord Bot</strong> <span class="bot-label"><span data-i18n="BOT">БОТ</span></span> <time><span data-i18n="Today, 12:00">Сьогодні, 12:00</span></time></div>
+              <div id="preview-content" class="preview-content muted"><span data-i18n="Message text">Текст повідомлення</span></div>
+              <div id="preview-embed" class="preview-embed">
+                <div id="preview-author" class="preview-author hidden"></div>
+                <a id="preview-title" class="preview-title"><span data-i18n="Post title">Заголовок публікації</span></a>
+                <div id="preview-description" class="preview-description"><span data-i18n="Your post description will appear here.">Тут з’явиться опис публікації.</span></div>
+                <div id="preview-fields" class="preview-fields"></div>
+                <div id="preview-image" class="preview-image hidden"><span data-i18n="Uploaded image preview">Попередній перегляд завантаженого зображення</span></div>
+                <div id="preview-footer" class="preview-footer hidden"></div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="tab-messages" class="tab-panel">
+      <div class="panel">
+        <div class="section-heading"><div><p class="eyebrow"><span data-i18n="HISTORY">ІСТОРІЯ</span></p><h2><span data-i18n="Sent messages">Надіслані повідомлення</span></h2></div><button id="refresh-messages" class="button ghost"><span data-i18n="Refresh">Оновити</span></button></div>
+        <form id="import-form" class="import-box">
+          <div class="import-heading">
+            <strong><span data-i18n="Import messages from Discord">Імпорт повідомлень із Discord</span></strong>
+            <span data-i18n="Imports only messages sent by this bot.">Імпортує лише повідомлення, надіслані цим ботом.</span>
+          </div>
+          <label><span data-i18n="Server">Сервер</span>
+            <select id="import-guild" required><option value="" data-i18n="Select a server">Виберіть сервер</option></select>
+          </label>
+          <label><span data-i18n="Channel">Канал</span>
+            <select id="import-channel" disabled><option value="" data-i18n="All available channels">Усі доступні канали</option></select>
+          </label>
+          <label><span data-i18n="Recent messages per channel">Останніх повідомлень на канал</span>
+            <input id="import-limit" type="number" min="1" max="10000" value="1000" required>
+          </label>
+          <label class="switch-row import-all"><input id="import-all" type="checkbox"><span data-i18n="Scan entire history">Сканувати всю історію</span></label>
+          <button id="import-submit" class="button primary" type="submit"><span data-i18n="Import">Імпортувати</span></button>
+          <span id="import-status" class="form-status"></span>
+        </form>
+        <div id="messages-list" class="record-list empty-state"><span data-i18n="No messages yet.">Повідомлень ще немає.</span></div>
+      </div>
+    </section>
+
+    <section id="tab-roles" class="tab-panel">
+      <div class="split-layout">
+        <form id="reaction-form" class="panel stack">
+          <div><p class="eyebrow"><span data-i18n="REACTION ROLE">РОЛЬ ЗА РЕАКЦІЮ</span></p><h2><span data-i18n="New rule">Нове правило</span></h2></div>
+          <label><span data-i18n="Server">Сервер</span><select id="rr-guild" required><option value="" data-i18n="Select a server">Виберіть сервер</option></select></label>
+          <label><span data-i18n="Channel">Канал</span><select id="rr-channel" required disabled><option value="" data-i18n="Select a server">Виберіть сервер</option></select></label>
+          <label><span data-i18n="Message ID">ID повідомлення</span><input id="rr-message" inputmode="numeric" required placeholder="123456789012345678"></label>
+          <div class="emoji-field">
+            <label><span data-i18n="Emoji">Емодзі</span></label>
+            <div class="emoji-input-row">
+              <input id="rr-emoji" required placeholder="✅ або власний емодзі" data-i18n-placeholder="✅ or custom emoji">
+              <button id="open-emoji-picker" class="button ghost" type="button"><span data-i18n="Choose emoji">Вибрати емодзі</span></button>
+            </div>
+            <div id="emoji-picker" class="emoji-picker hidden">
+              <div class="emoji-picker-head">
+                <input id="emoji-search" type="search" placeholder="Пошук: heart, fire, smile…" data-i18n-placeholder="Search: heart, fire, smile…" autocomplete="off">
+                <button id="close-emoji-picker" class="button ghost small" type="button" aria-label="Закрити" data-i18n-aria-label="Close">×</button>
+              </div>
+              <p id="emoji-picker-status"><span data-i18n="Loading catalog…">Завантаження каталогу…</span></p>
+              <div id="emoji-grid" class="emoji-grid"></div>
+            </div>
+            <span class="field-hint"><span data-i18n="You can also paste a custom server emoji from Discord.">Власний емодзі сервера також можна вставити з Discord вручну.</span></span>
+          </div>
+          <label><span data-i18n="Role">Роль</span><select id="rr-role" required disabled><option value="" data-i18n="Select a server">Виберіть сервер</option></select></label>
+          <label class="switch-row"><input id="rr-remove" type="checkbox" checked><span data-i18n="Remove role when reaction is removed">Знімати роль після видалення реакції</span></label>
+          <div class="actions"><button class="button primary" type="submit"><span data-i18n="Create rule">Створити правило</span></button><span id="rr-status" class="form-status"></span></div>
+        </form>
+        <div class="panel">
+          <div class="section-heading"><div><p class="eyebrow"><span data-i18n="ACTIVE">АКТИВНІ</span></p><h2><span data-i18n="Rules">Правила</span></h2></div><button id="refresh-roles" class="button ghost"><span data-i18n="Refresh">Оновити</span></button></div>
+          <div id="reaction-list" class="record-list empty-state"><span data-i18n="No rules yet.">Правил ще немає.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-users" class="tab-panel">
+      <div class="panel stack">
+        <div class="section-heading"><h2 data-i18n="Users and access">Користувачі та доступ</h2>
+          <button id="refresh-users" type="button" class="button ghost" data-i18n="Refresh">Оновити</button>
+        </div>
+        <p data-i18n="Users get no bot access until you grant it. You can add a Discord user ID before their first sign-in.">Користувачі не мають доступу до ботів, доки ви його не надасте. Discord ID можна додати до першого входу.</p>
+        <form id="grant-form" class="grid two">
+          <label><span data-i18n="Discord User ID">Discord ID користувача</span><input id="grant-user" required inputmode="numeric" pattern="[0-9]+"></label>
+          <label><span data-i18n="Bot">Бот</span><select id="grant-bot" required></select></label>
+          <label><span data-i18n="Access">Доступ</span><select id="grant-role">
+            <option value="viewer" data-i18n="Viewer">Спостерігач</option>
+            <option value="operator" data-i18n="Operator">Керівник</option>
+            <option value="none" data-i18n="No access">Без доступу</option>
+          </select></label>
+          <button type="submit" class="button primary" data-i18n="Save access">Зберегти доступ</button>
+        </form>
+        <div id="users-list" class="record-list"></div>
+      </div>
+    </section>
+
+    <section id="tab-audit" class="tab-panel">
+      <div class="panel">
+        <div class="section-heading"><div><p class="eyebrow"><span data-i18n="AUDIT">ЖУРНАЛ</span></p><h2><span data-i18n="Recent actions">Останні дії</span></h2></div><button id="refresh-audit" class="button ghost"><span data-i18n="Refresh">Оновити</span></button></div>
+        <div id="audit-list" class="audit-list empty-state"><span data-i18n="The audit log is empty.">Журнал порожній.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="mention-autocomplete" class="mention-autocomplete hidden" role="listbox" aria-label="Згадки Discord" data-i18n-aria-label="Discord mentions"></div>
+  <div id="toast" class="toast" role="status"></div>
+  <script id="i18n-catalog" type="application/json">{{ translation_catalog | tojson }}</script>
+  <script src="{{ url_for('static', path='/i18n.js') }}" defer></script>
+  <script src="{{ url_for('static', path='/app.js') }}" defer></script>
+</body>
+</html>

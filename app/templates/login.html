@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Discord Bot Panel</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+  <main class="login-layout">
+    <section class="panel stack">
+      <h1>Discord Bot Panel</h1>
+      <label class="language-picker"><span data-i18n="Language">Мова</span>
+        <select id="language-select"><option value="uk">Українська</option><option value="en">English</option></select>
+      </label>
+      <p data-i18n="Sign in with Discord to access your assigned bots.">Увійдіть через Discord, щоб працювати з призначеними вам ботами.</p>
+      {% if error_key %}<p class="login-error" role="alert" data-i18n="{{ error_key }}"></p>{% endif %}
+      <a id="discord-login" class="button primary" href="/auth/discord/login" data-i18n="Sign in with Discord">Увійти через Discord</a>
+      <p class="field-hint" data-i18n="Signing in does not automatically grant access. The panel owner assigns permissions.">Вхід не надає доступ автоматично. Права призначає власник панелі.</p>
+    </section>
+  </main>
+  <script id="i18n-catalog" type="application/json">{{ translation_catalog | tojson }}</script>
+  <script src="{{ url_for('static', path='/i18n.js') }}" defer></script>
+  <script src="{{ url_for('static', path='/login.js') }}" defer></script>
+</body>
+</html>
