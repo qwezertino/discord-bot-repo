@@ -1,0 +1,58 @@
+# Access and error logs can contain OAuth codes/headers; log only query-free paths.
+log_format panel '$remote_addr $request_method $uri $status';
+access_log /dev/stdout panel;
+error_log /dev/null crit;
+server_tokens off;
+
+server {
+    listen 80;
+    server_name ${PANEL_PUBLIC_HOST};
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+        default_type text/plain;
+    }
+    location / {
+        return 308 https://${PANEL_PUBLIC_HOST}:${PANEL_HTTPS_PORT}${PANEL_BASE_PATH}/;
+    }
+}
+
+# Preserve old HTTPS bookmarks while the main panel lives on the dedicated port.
+server {
+    listen 444 ssl;
+    server_name ${PANEL_PUBLIC_HOST};
+    ssl_certificate /etc/letsencrypt/live/panel/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/panel/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    return 308 https://${PANEL_PUBLIC_HOST}:${PANEL_HTTPS_PORT}${PANEL_BASE_PATH}/;
+}
+
+server {
+    listen 443 ssl;
+    server_name ${PANEL_PUBLIC_HOST};
+    ssl_certificate /etc/letsencrypt/live/panel/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/panel/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    client_max_body_size 110m;
+
+    location = / {
+        return 308 https://${PANEL_PUBLIC_HOST}:${PANEL_HTTPS_PORT}${PANEL_BASE_PATH}/;
+    }
+    location = ${PANEL_BASE_PATH} {
+        return 308 https://${PANEL_PUBLIC_HOST}:${PANEL_HTTPS_PORT}${PANEL_BASE_PATH}/;
+    }
+    location ${PANEL_BASE_PATH}/ {
+        # Keep the prefix: the application owns its mount point and redirects.
+        proxy_pass http://panel:8765;
+        proxy_http_version 1.1;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Connection "";
+        proxy_read_timeout 3600s;
+        proxy_send_timeout 3600s;
+        proxy_buffering off;
+    }
+    location / {
+        return 404;
+    }
+}

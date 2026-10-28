@@ -1,0 +1,10 @@
+[Unit]
+Description=Renew the Discord panel TLS certificate in Docker
+After=docker.service network-online.target
+Requires=docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/discord-bot-panel
+ExecStart=/home/discord-bot-panel/docker/renew-certificates.sh .deploy/compose.env
+TimeoutStartSec=600

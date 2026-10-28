@@ -1,0 +1,90 @@
+name: discord-bot-panel
+
+services:
+  panel:
+    build: .
+    restart: unless-stopped
+    init: true
+    user: "${PANEL_UID:-10001}:${PANEL_GID:-10001}"
+    environment:
+      PANEL_AUTH_MODE: discord
+      PANEL_HOST: 0.0.0.0
+      PANEL_PORT: "8765"
+      PANEL_BASE_PATH: ${PANEL_BASE_PATH:-/panel}
+      DATA_DIR: /app/data
+      FORWARDED_ALLOW_IPS: "127.0.0.1,${PANEL_PROXY_IP:-172.31.86.3}"
+    volumes:
+      - type: bind
+        source: ${PANEL_ENV_FILE:-./.env}
+        target: /app/.env
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${PANEL_DATA_DIR:-./data}
+        target: /app/data
+        bind:
+          create_host_path: false
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test: [CMD, python, /opt/panel-healthcheck.py]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+    networks:
+      panel:
+        ipv4_address: ${PANEL_APP_IP:-172.31.86.2}
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+  nginx:
+    image: nginx:stable-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951
+    restart: unless-stopped
+    depends_on:
+      panel:
+        condition: service_healthy
+    ports:
+      - "${PANEL_HTTPS_PORT:-8443}:443"
+      - "${PANEL_HTTP_PORT:-80}:80"
+      - "${PANEL_LEGACY_HTTPS_PORT:-443}:444"
+    environment:
+      PANEL_PUBLIC_HOST: ${PANEL_PUBLIC_HOST:?Set PANEL_PUBLIC_HOST to the public IP or DNS name}
+      PANEL_HTTPS_PORT: ${PANEL_HTTPS_PORT:-8443}
+      PANEL_BASE_PATH: ${PANEL_BASE_PATH:-/panel}
+      NGINX_ENVSUBST_FILTER: ^PANEL_
+    volumes:
+      - ./docker/nginx.conf.template:/etc/nginx/templates/default.conf.template:ro
+      - ${PANEL_TLS_DIR:-./.deploy/letsencrypt}/live:/etc/letsencrypt/live:ro
+      - ${PANEL_TLS_DIR:-./.deploy/letsencrypt}/archive:/etc/letsencrypt/archive:ro
+      - ${PANEL_ACME_DIR:-./.deploy/acme-webroot}:/var/www/certbot:ro
+    security_opt: [no-new-privileges:true]
+    networks:
+      panel:
+        ipv4_address: ${PANEL_PROXY_IP:-172.31.86.3}
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+  certbot:
+    image: certbot/certbot:v5.4.0@sha256:c23159d30afdd9c97960578aa4654f5901de6cae394958f894074dedd55e599d
+    profiles: [tls]
+    volumes:
+      - ${PANEL_TLS_DIR:-./.deploy/letsencrypt}:/etc/letsencrypt
+      - ${PANEL_ACME_DIR:-./.deploy/acme-webroot}:/var/www/certbot
+    security_opt: [no-new-privileges:true]
+
+networks:
+  panel:
+    ipam:
+      config:
+        - subnet: ${PANEL_NETWORK_SUBNET:-172.31.86.0/29}

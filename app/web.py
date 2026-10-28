@@ -26,6 +26,7 @@ from .audit_context import audit_actor
 from .emoji_catalog import unicode_emoji_catalog
 from .i18n import CATALOG, language, localized_status, translate, validation_detail
 from .logging_filters import install_oauth_log_filter
+from .path_prefix import PathPrefixMiddleware
 from .models import BotProfile, MessageImportRequest, MessagePayload, ReactionRoleCreate
 
 
@@ -82,7 +83,7 @@ class PanelSecurityMiddleware(BaseHTTPMiddleware):
         if self.auth.enabled and not identity and not public:
             if path.startswith("/api/"):
                 return reject(401, "Sign in to continue")
-            return RedirectResponse("/login", status_code=303)
+            return RedirectResponse(self.settings.panel_url("/login"), status_code=303)
         if self.auth.enabled and request.method not in {"GET", "HEAD", "OPTIONS"}:
             supplied = request.headers.get("x-csrf-token", "")
             expected = csrf_token(request.cookies.get(self.auth.session_cookie, ""))
@@ -137,8 +138,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.bots = manager
     app.state.auth = auth
     app.add_middleware(PanelSecurityMiddleware, settings=settings, auth=auth)
+    if settings.base_path:
+        app.add_middleware(PathPrefixMiddleware, prefix=settings.base_path)
     app.mount("/static", StaticFiles(directory=BASE_DIR / "app" / "static"), name="static")
     templates = Jinja2Templates(directory=BASE_DIR / "app" / "templates")
+    templates.env.globals["panel_base_path"] = settings.base_path
     app.include_router(auth_router(auth, templates))
 
     @app.exception_handler(DiscordServiceError)

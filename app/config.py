@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import ipaddress
 import os
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -44,8 +45,14 @@ class Settings:
     oauth_client_secret: str = field(default="", repr=False)
     oauth_redirect_uri: str = "http://127.0.0.1:8765/auth/discord/callback"
     session_hours: int = 12
+    base_path: str = ""
+
+    def panel_url(self, path: str = "/") -> str:
+        return self.base_path + path
 
     def validate_security(self) -> None:
+        if self.base_path and not re.fullmatch(r"/[A-Za-z0-9_-]+(?:/[A-Za-z0-9_-]+)*", self.base_path):
+            raise RuntimeError("PANEL_BASE_PATH must be empty or a path such as /panel (without a trailing slash)")
         if self.auth_mode not in {"local", "discord"}:
             raise RuntimeError("PANEL_AUTH_MODE must be local or discord")
         if self.owner_discord_id and (not self.owner_discord_id.isdigit() or int(self.owner_discord_id) <= 0):
@@ -64,9 +71,9 @@ class Settings:
         except ValueError:
             raise RuntimeError("Invalid DISCORD_OAUTH_REDIRECT_URI port") from None
         if (not uri.hostname or uri.username or uri.password or uri.query or uri.fragment
-                or uri.path != "/auth/discord/callback"
+                or uri.path != self.panel_url("/auth/discord/callback")
                 or not (uri.scheme == "https" or uri.scheme == "http" and _is_loopback(uri.hostname))):
-            raise RuntimeError("DISCORD_OAUTH_REDIRECT_URI must be HTTPS (HTTP is allowed on localhost) and end with /auth/discord/callback")
+            raise RuntimeError("DISCORD_OAUTH_REDIRECT_URI must be HTTPS (HTTP is allowed on localhost) and match PANEL_BASE_PATH + /auth/discord/callback")
         if not 1 <= self.session_hours <= 168:
             raise RuntimeError("PANEL_SESSION_HOURS must be between 1 and 168")
 
@@ -88,6 +95,7 @@ class Settings:
             oauth_client_secret=os.getenv("DISCORD_OAUTH_CLIENT_SECRET", "").strip(),
             oauth_redirect_uri=os.getenv("DISCORD_OAUTH_REDIRECT_URI", "http://127.0.0.1:8765/auth/discord/callback").strip(),
             session_hours=int(os.getenv("PANEL_SESSION_HOURS", "12")),
+            base_path=os.getenv("PANEL_BASE_PATH", "").strip(),
             discord_token=token,
             panel_host=host,
             panel_port=int(os.getenv("PANEL_PORT", "8765")),

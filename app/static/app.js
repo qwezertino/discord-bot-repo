@@ -79,9 +79,9 @@ const $$ = (selector) => [...document.querySelectorAll(selector)];
 class StaleRequest extends Error {}
 
 function scopedUrl(url) {
-  if (url === "/api/bots" || url.startsWith("/api/bots/") || url.startsWith("/api/auth/") || url.startsWith("/api/admin/") || url === "/api/emojis") return url;
+  if (url === "/api/bots" || url.startsWith("/api/bots/") || url.startsWith("/api/auth/") || url.startsWith("/api/admin/") || url === "/api/emojis") return PanelURLs.path(url);
   if (!state.botId) throw new Error(t("Select a bot profile"));
-  return url.replace("/api/", `/api/bots/${state.botId}/`);
+  return PanelURLs.path(url.replace("/api/", `/api/bots/${state.botId}/`));
 }
 
 async function api(url, options = {}) {
@@ -95,7 +95,7 @@ async function api(url, options = {}) {
       ? await response.json()
       : null;
     if (response.status === 401 && state.auth.mode === "discord") {
-      window.location.assign("/login");
+      window.location.assign(PanelURLs.path("/login"));
       throw new StaleRequest();
     }
     if (!response.ok) throw new Error(apiError(body, response.status));
@@ -1316,7 +1316,7 @@ function applyAccessUI() {
 async function initializeAccount() {
   try {
     state.auth = await api("/api/auth/me");
-    if (!state.auth.authenticated) { window.location.assign("/login"); return; }
+    if (!state.auth.authenticated) { window.location.assign(PanelURLs.path("/login")); return; }
     applyAccessUI();
     await loadBots();
   } catch (error) { if (!(error instanceof StaleRequest)) showToast(error.message, true); }
@@ -1368,6 +1368,6 @@ $("#grant-form").addEventListener("submit", async event => {
 $("#logout").addEventListener("click", async () => {
   try {
     await api("/api/auth/logout", {method:"POST"});
-    window.location.assign("/login");
+    window.location.assign(PanelURLs.path("/login"));
   } catch (error) { if (!(error instanceof StaleRequest)) showToast(error.message, true); }
 });

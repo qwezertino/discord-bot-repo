@@ -30,7 +30,7 @@ const context = vm.createContext({
     const attribute = selector.match(/^\[(data-i18n(?:-[a-z-]+)?)\]$/)?.[1];
     return attribute ? [...nodes.values()].filter(item => item.getAttribute(attribute)) : [];
   }, documentElement: {lang: 'uk'},
-    getElementById: id => id === 'i18n-catalog' ? {textContent: catalog} : node('#' + id),
+    getElementById: id => id === 'i18n-catalog' ? {textContent: catalog} : id === 'panel-config' ? {textContent: JSON.stringify({base_path:''})} : node('#' + id),
     addEventListener(type, handler) { listeners.set('document:' + type, handler); },
     dispatchEvent(event) { listeners.get('document:' + event.type)?.(event); },
   },
@@ -39,6 +39,7 @@ const context = vm.createContext({
   Option: function(label, value) { this.textContent = label; this.value = value; this.dataset = {}; },
   console, setTimeout, clearTimeout,
 });
+vm.runInContext(fs.readFileSync('app/static/urls.js', 'utf8'), context);
 vm.runInContext(fs.readFileSync('app/static/i18n.js', 'utf8'), context);
 // Suppress boot only; exercise the actual functions from the shipped script.
 vm.runInContext(source.replace('bindEvents();\nupdatePreview();\ninitializeAccount();\nsetInterval(() => { if (state.botId) refreshStatus(); }, 5000);', ''), context);
@@ -164,6 +165,20 @@ async function main() {
   context.fetch = async () => ({ok:true,headers:{get:()=> 'application/json'},json:async()=>({mode:"discord",authenticated:false,owner:false})});
   await run('initializeAccount()');
   assert.equal(redirected, '/login');
-  console.log('Frontend: profiles, UK/EN, draft preservation, sign-in, role controls and CSRF passed');
+  const originalGetElement = context.document.getElementById;
+  context.document.getElementById = id => id === 'panel-config' ? {textContent:JSON.stringify({base_path:'/panel'})} : originalGetElement(id);
+  vm.runInContext(fs.readFileSync('app/static/urls.js','utf8'),context);
+  run('state.botId="perimeter"; state.auth={mode:"discord",owner:false,authenticated:false}');
+  assert.equal(run('scopedUrl("/api/auth/me")'),'/panel/api/auth/me');
+  assert.equal(run('scopedUrl("/api/admin/users")'),'/panel/api/admin/users');
+  assert.equal(run('scopedUrl("/api/messages")'),'/panel/api/bots/perimeter/messages');
+  assert.equal(run('scopedUrl("/api/bots/perimeter/reconnect")'),'/panel/api/bots/perimeter/reconnect');
+  assert.throws(()=>run('PanelURLs.path("//evil.example")'));
+  context.fetch=async()=>({ok:false,status:401,headers:{get:()=> 'application/json'},json:async()=>({detail:'Sign in to continue'})});
+  await assert.rejects(run('api("/api/messages")'),error=>error.constructor.name==='StaleRequest');
+  assert.equal(redirected,'/panel/login');
+  vm.runInContext(fs.readFileSync('app/static/login.js','utf8'),context);
+  assert.equal(node('#discord-login').href,'/panel/auth/discord/login?lang=en');
+  console.log('Frontend: profiles, UK/EN, draft preservation, roles, CSRF and /panel navigation passed');
 }
 main().catch(error => { console.error(error); process.exitCode = 1; });

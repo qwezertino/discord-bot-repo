@@ -292,6 +292,8 @@
 
   <div id="mention-autocomplete" class="mention-autocomplete hidden" role="listbox" aria-label="Згадки Discord" data-i18n-aria-label="Discord mentions"></div>
   <div id="toast" class="toast" role="status"></div>
+  <script id="panel-config" type="application/json">{{ {"base_path": panel_base_path} | tojson }}</script>
+  <script src="{{ url_for('static', path='/urls.js') }}" defer></script>
   <script id="i18n-catalog" type="application/json">{{ translation_catalog | tojson }}</script>
   <script src="{{ url_for('static', path='/i18n.js') }}" defer></script>
   <script src="{{ url_for('static', path='/app.js') }}" defer></script>

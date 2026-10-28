@@ -25,7 +25,7 @@ def auth_router(auth: AuthService, templates: Jinja2Templates) -> APIRouter:
     @router.get("/login")
     async def login_page(request: Request):
         if request.state.identity:
-            return RedirectResponse("/", status_code=303)
+            return RedirectResponse(auth.settings.panel_url("/"), status_code=303)
         error = request.query_params.get("error")
         error_key = {
             "oauth": "Discord sign-in failed. Please try again.",
@@ -42,7 +42,7 @@ def auth_router(auth: AuthService, templates: Jinja2Templates) -> APIRouter:
         if not auth.enabled:
             raise HTTPException(404, "Discord login is not enabled")
         if request.state.identity:
-            return RedirectResponse("/", status_code=303)
+            return RedirectResponse(auth.settings.panel_url("/"), status_code=303)
         url, binding = auth.begin_login(language(request.query_params.get("lang")))
         response = RedirectResponse(url, status_code=303)
         response.set_cookie(auth.flow_cookie, binding, max_age=600, httponly=True, secure=auth.secure_cookie, samesite="lax", path="/")
@@ -69,14 +69,14 @@ def auth_router(auth: AuthService, templates: Jinja2Templates) -> APIRouter:
                         raise
                     error = "blocked"
                 else:
-                    response = RedirectResponse("/", status_code=303)
+                    response = RedirectResponse(auth.settings.panel_url("/"), status_code=303)
                     response.set_cookie(auth.session_cookie, token, max_age=auth.settings.session_hours * 3600,
                                         httponly=True, secure=auth.secure_cookie, samesite="lax", path="/")
                     response.delete_cookie(auth.flow_cookie, path="/", secure=auth.secure_cookie, httponly=True, samesite="lax")
                     return response
             else:
                 error = "oauth"
-        response = RedirectResponse("/login?error=" + error, status_code=303)
+        response = RedirectResponse(auth.settings.panel_url("/login?error=") + error, status_code=303)
         response.delete_cookie(auth.flow_cookie, path="/", secure=auth.secure_cookie, httponly=True, samesite="lax")
         return response
 

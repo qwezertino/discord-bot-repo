@@ -15,10 +15,12 @@
       </label>
       <p data-i18n="Sign in with Discord to access your assigned bots.">Увійдіть через Discord, щоб працювати з призначеними вам ботами.</p>
       {% if error_key %}<p class="login-error" role="alert" data-i18n="{{ error_key }}"></p>{% endif %}
-      <a id="discord-login" class="button primary" href="/auth/discord/login" data-i18n="Sign in with Discord">Увійти через Discord</a>
+      <a id="discord-login" class="button primary" href="{{ panel_base_path }}/auth/discord/login" data-i18n="Sign in with Discord">Увійти через Discord</a>
       <p class="field-hint" data-i18n="Signing in does not automatically grant access. The panel owner assigns permissions.">Вхід не надає доступ автоматично. Права призначає власник панелі.</p>
     </section>
   </main>
+  <script id="panel-config" type="application/json">{{ {"base_path": panel_base_path} | tojson }}</script>
+  <script src="{{ url_for('static', path='/urls.js') }}" defer></script>
   <script id="i18n-catalog" type="application/json">{{ translation_catalog | tojson }}</script>
   <script src="{{ url_for('static', path='/i18n.js') }}" defer></script>
   <script src="{{ url_for('static', path='/login.js') }}" defer></script>

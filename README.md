@@ -71,6 +71,21 @@ Application ID необязателен; если указан, панель с�
 панель запрещает reaction-role правила для ролей с Administrator, Manage Server
 или Manage Roles.
 
+## Docker, Nginx и размещение в /panel
+
+Подготовлен Docker Compose для приложения, Nginx и Certbot. Адрес по умолчанию:
+`https://IP:8443/panel/`. У контейнера приложения нет опубликованного порта;
+SQLite и вложения находятся в постоянном bind mount, секреты монтируются
+отдельным `.env` только для чтения и не попадают в образ.
+
+Инструкции установки, TLS на IP, переноса данных, обновления и продления
+сертификатов: [docker/README.md](docker/README.md).
+
+`PANEL_BASE_PATH=/panel` включает префикс для интерфейса, API, файлов и OAuth.
+Callback должен включать тот же префикс и внешний порт, например
+`https://89.117.62.251:8443/panel/auth/discord/callback`. Пустое значение сохраняет
+обычное размещение в корне сайта.
+
 ## Вход через Discord и права пользователей
 
 Режим задаётся явно: `PANEL_AUTH_MODE=local` сохраняет прежний локальный доступ
@@ -324,6 +339,7 @@ journalctl -u discord-bot-panel -f
 node --check app/static/app.js
 node --check app/static/i18n.js
 node --check app/static/login.js
+node --check app/static/urls.js
 node tests/test_frontend.cjs
 sh -n run.sh
 git diff --check

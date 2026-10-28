@@ -11,3 +11,5 @@ build/
 dist/
 data/*
 !data/.gitkeep
+
+.deploy/

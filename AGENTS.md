@@ -18,6 +18,8 @@ Discord: `app/discord_service.py`; настройки: `app/config.py`; БД: `a
 переключение: `app/static/i18n.js`, ошибки API: `app/i18n.py`.
 Вход и права: `app/auth.py`, `app/auth_routes.py`; защита API: `app/web.py`.
 Не ослабляй проверки авторизации и не включай local как автоматический fallback.
+Docker/Nginx: `compose.yaml`, `Dockerfile`, `docker/`; префикс URL —
+`PANEL_BASE_PATH` и `app/path_prefix.py`, клиентские пути — `app/static/urls.js`.
 
 ## Работа с проектом
 
