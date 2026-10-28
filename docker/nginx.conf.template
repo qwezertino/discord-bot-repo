@@ -12,18 +12,18 @@ server {
         default_type text/plain;
     }
     location / {
-        return 308 https://${PANEL_PUBLIC_HOST}:${PANEL_HTTPS_PORT}${PANEL_BASE_PATH}/;
+        return 404;
     }
 }
 
-# Preserve old HTTPS bookmarks while the main panel lives on the dedicated port.
+# The main HTTPS address does not expose or redirect to the panel.
 server {
     listen 444 ssl;
     server_name ${PANEL_PUBLIC_HOST};
     ssl_certificate /etc/letsencrypt/live/panel/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/panel/privkey.pem;
     ssl_protocols TLSv1.2 TLSv1.3;
-    return 308 https://${PANEL_PUBLIC_HOST}:${PANEL_HTTPS_PORT}${PANEL_BASE_PATH}/;
+    return 404;
 }
 
 server {

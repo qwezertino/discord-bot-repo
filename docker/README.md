@@ -6,7 +6,7 @@ keeps its SQLite database and uploads in a persistent bind mount. Do not scale i
 or use multiple Uvicorn workers: that would duplicate Discord Gateway clients.
 
 The defaults serve `https://IP:8443/panel/`. Port 80 serves ACME challenges and
-redirects to the panel. Port 443 redirects old HTTPS bookmarks to the new URL.
+returns 404 for other paths. Port 443 returns 404 and never redirects to the panel.
 These ports can be changed in the Compose settings file.
 
 ## Settings
