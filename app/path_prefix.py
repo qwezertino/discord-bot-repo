@@ -22,9 +22,6 @@ class PathPrefixMiddleware:
                 await JSONResponse({'detail': 'Not Found'}, status_code=404)(scope, receive, send)
             return
         child = dict(scope)
-        child['path'] = path[len(self.prefix):]
+        # ASGI keeps the full path; mounted routers remove root_path themselves.
         child['root_path'] = scope.get('root_path', '') + self.prefix
-        raw = scope.get('raw_path')
-        if raw and raw.startswith(self.prefix.encode()):
-            child['raw_path'] = raw[len(self.prefix):]
         await self.app(child, receive, send)

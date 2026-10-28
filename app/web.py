@@ -76,6 +76,8 @@ class PanelSecurityMiddleware(BaseHTTPMiddleware):
         identity = self.auth.resolve(request)
         request.state.identity = identity
         path = request.url.path
+        if self.settings.base_path:
+            path = path[len(self.settings.base_path):]
         public = request.method in {"GET", "HEAD"} and (
             path in {"/login", "/auth/discord/login", "/auth/discord/callback", "/api/auth/me"}
             or path.startswith("/static/")

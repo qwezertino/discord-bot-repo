@@ -32,6 +32,10 @@ def test_prefix_boundaries_and_public_asset_urls(tmp_path):
         assert 'http://localhost/panel/static/urls.js' in page
         assert 'href="/panel/auth/discord/login"' in page
         assert '"base_path": "/panel"' in page
+        status, body = await request(app,'GET','/panel/static/urls.js')
+        assert status == 200 and b'PanelURLs' in body
+        status, body = await request(app,'GET','/panel/static/style.css')
+        assert status == 200 and b':root' in body
         assert json.loads((await request(app,'GET','/panel/api/auth/me'))[1])['authenticated'] is False
         _, owner_headers = session(app,OWNER)
         status, body = await request(app,'GET','/panel/',headers=owner_headers)

@@ -87,6 +87,10 @@ HTTP status/access logs and application logs for diagnostics. Configuration
 and process startup errors remain visible in the Nginx container log.
 
 Containers use `restart: unless-stopped`, including after a server reboot.
+After changing a mounted `.env`, recreate the application container with
+`docker compose --env-file .deploy/compose.env up -d --force-recreate --no-deps panel`.
+This also handles editors that replace the file inode atomically.
+
 Images and containers can be rebuilt without removing the data mount. Never
 use `down -v` or replace a populated data directory during an update.
 

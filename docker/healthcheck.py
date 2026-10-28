@@ -13,3 +13,10 @@ request = Request(
 )
 with urlopen(request, timeout=4) as response:
     assert response.status == 200 and json.load(response)['mode'] == 'discord'
+
+asset = Request(
+    'http://127.0.0.1:8765' + settings.panel_url('/static/urls.js'),
+    headers={'Host': origin.netloc, 'X-Forwarded-Proto': origin.scheme},
+)
+with urlopen(asset, timeout=4) as response:
+    assert response.status == 200 and b'PanelURLs' in response.read()
